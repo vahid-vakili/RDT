@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="RDT.Views.UcUsers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RDT.Views"
+             xmlns:ViewModel="clr-namespace:RDT.ViewModels"
+             xmlns:component="clr-namespace:RDT.Style"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="750">
+        <UserControl.DataContext>
+            <ViewModel:UserCredViewModel/>
+        </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images\Login.png" Margin="7" Height="30" Width="30" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txtUser" Text="{Binding User.Name,Mode=TwoWay}" VerticalAlignment="Center" Foreground="LightGray" Width="200" FontSize="16"  Background="Transparent"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Pass"  FontWeight="Bold" Foreground="LightGray"/>
+                <component:BindablePasswordBox Width="220" Height="30" Password="{Binding User.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBox Text="{Binding CredentialsList}" Name="txtCredentials" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" FontWeight="Bold" Margin="5" Height="300"   Foreground="LightGray" Background="Transparent" BorderThickness="0"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button  x:Name="btnReload" Command="{Binding Reload}" Margin="50,0" Height="30" Width="50" Foreground="LightGray" Background="Transparent" BorderThickness="0" >Reload</Button>
+            <Button  x:Name="btnSave" Command="{Binding Save}" Margin="50,0" Height="30" Width="50" Foreground="LightGray" Background="Transparent" BorderThickness="0">Save</Button>
+            <Button  x:Name="btnDel" Command="{Binding Delete}" Margin="50,0" Height="30" Width="80" Background="Transparent" Foreground="OrangeRed" FontWeight="Bold" BorderThickness="0">Delete</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

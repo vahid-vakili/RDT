@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RDTConfiguration>
+	<Settings>
+		<Domain>My-Domain</Domain>
+		<AutoClose>false</AutoClose>
+		<WebAddress>https://github.com/</WebAddress>
+	</Settings>
+	<servers>
+		<Category>
+			<Name>WindowsHosts</Name>
+			<Env>192.168.12.11;winHost2;winHost7</Env>
+		</Category>
+		<Category>
+			<Name>LinuxHosts</Name>
+			<Env>192.168.7.17;192.168.7.19;linuxHost5</Env>
+		</Category>
+	</servers>
+
+</RDTConfiguration>
